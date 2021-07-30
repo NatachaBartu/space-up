@@ -1,4 +1,8 @@
 class Trip < ApplicationRecord
   belongs_to :user
-  has_one :order
+  belongs_to :planet
+  has_many :cabins
+  
+
+  
 end

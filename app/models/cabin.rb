@@ -1,3 +1,3 @@
 class Cabin < ApplicationRecord
-has_one :trip
+    belongs_to :trip
 end

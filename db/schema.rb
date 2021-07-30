@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_28_002536) do
+ActiveRecord::Schema.define(version: 2021_07_29_061543) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,10 +24,10 @@ ActiveRecord::Schema.define(version: 2021_07_28_002536) do
   end
 
   create_table "cabins", force: :cascade do |t|
-    t.bigint "trip_id", null: false
     t.string "name"
     t.integer "price"
     t.boolean "sold", default: false, null: false
+    t.bigint "trip_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["trip_id"], name: "index_cabins_on_trip_id"
@@ -43,10 +43,33 @@ ActiveRecord::Schema.define(version: 2021_07_28_002536) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
-  create_table "trips", force: :cascade do |t|
+  create_table "planets", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "tests", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "trips", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "planet_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["planet_id"], name: "index_trips_on_planet_id"
+    t.index ["user_id"], name: "index_trips_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -66,4 +89,7 @@ ActiveRecord::Schema.define(version: 2021_07_28_002536) do
   add_foreign_key "cabins", "trips"
   add_foreign_key "orders", "trips"
   add_foreign_key "orders", "users"
+  add_foreign_key "profiles", "users"
+  add_foreign_key "trips", "planets"
+  add_foreign_key "trips", "users"
 end

@@ -2,12 +2,12 @@
 
 <p>
   <strong>Seller:</strong>
-  <%= @trip.seller_id %>
+  <%= @trip.user_id %>
 </p>
 
 <p>
   <strong>Name:</strong>
-  <%= @trip.name %>
+  <%= @trip.planet.name %>
 </p>
 
 <%= link_to 'Edit', edit_trip_path(@trip) %> |

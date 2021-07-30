@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 #create a trip
-trips = [
+planets = [
     {name: "Mercury"},
     {name: "Venus"},
     {name: "Mars"},
@@ -22,9 +22,29 @@ if User.count == 0
     User.create(username:"Tester", email: "test@test.com", password: "password", password_confirmation: "password")
 end
 
+cabins = [
+    {name: "Gold", price: 1000},
+    {name: "Silver", price: 100},
+    {name: "Bronze", price: 10},
+]
+
+if Planet.count == 0
+    planets.each do |p|
+        Planet.create(name: p[:name])
+        puts "created #{p[:name]} trip"
+    end
+end
+
 if Trip.count == 0
-    trips.each do |t|
-        Trip.create(description: t[:description])
-        puts "created #{trip[:description]} trip"
+
+    user = User.find_by username: "Tester"
+    planets.each do |t|
+        planet = Planet.find_by name: t[:name]
+        trip = user.trips.create(planet: planet)
+        puts "created #{t[:name]} trip"
+        cabins.each do |c|
+            Cabin.create(trip: trip, name: c[:name], price: c[:price], sold: false)
+            puts "created #{c[:name]} cabin"
+        end
     end
 end

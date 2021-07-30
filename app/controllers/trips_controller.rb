@@ -1,9 +1,10 @@
 class TripsController < ApplicationController
   before_action :set_trip, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_planets, only: [:new, :edit, :create]
   # GET /trips or /trips.json
   def index
-    @trips = Trip.all
+    @trips = Trip.all.includes(:planet)
   end
 
   # GET /trips/1 or /trips/1.json
@@ -13,6 +14,7 @@ class TripsController < ApplicationController
   # GET /trips/new
   def new
     @trip = Trip.new
+      3.times { @trip.cabins.build }
   end
 
   # GET /trips/1/edit
@@ -20,8 +22,10 @@ class TripsController < ApplicationController
   end
 
   # POST /trips or /trips.json
+  #create a trips
   def create
-    @trip = Trip.new(trip_params)
+    p trip_params
+    @trip = current_user.trips.new(trip_params)
 
     respond_to do |format|
       if @trip.save
@@ -64,6 +68,17 @@ class TripsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def trip_params
-      params.require(:trip).permit(:seller_id, :name)
+      params.require(:trip).permit(:planet_id, cabin_attributes: [:name, :price, :sold] )
     end
+
+    def set_trips
+      @trip = Trip.find(params[:id])
+    end
+
+    def set_planets
+      #@trips = Trip.all
+      @planets = Planet.all
+    end
+
 end
+
