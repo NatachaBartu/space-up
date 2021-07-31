@@ -14,7 +14,6 @@ class TripsController < ApplicationController
   # GET /trips/new
   def new
     @trip = Trip.new
-      3.times { @trip.cabins.build }
   end
 
   # GET /trips/1/edit
@@ -68,7 +67,7 @@ class TripsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def trip_params
-      params.require(:trip).permit(:planet_id, cabin_attributes: [:name, :price, :sold] )
+      params.require(:trip).permit(:planet_id, :cabin_id, :price, :sold )
     end
 
     def set_trips
@@ -78,6 +77,7 @@ class TripsController < ApplicationController
     def set_planets
       #@trips = Trip.all
       @planets = Planet.all
+      @cabins = Cabin.all
     end
 
 end

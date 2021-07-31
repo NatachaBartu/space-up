@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_29_061543) do
+ActiveRecord::Schema.define(version: 2021_07_28_004031) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,12 +25,8 @@ ActiveRecord::Schema.define(version: 2021_07_29_061543) do
 
   create_table "cabins", force: :cascade do |t|
     t.string "name"
-    t.integer "price"
-    t.boolean "sold", default: false, null: false
-    t.bigint "trip_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["trip_id"], name: "index_cabins_on_trip_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -58,16 +54,15 @@ ActiveRecord::Schema.define(version: 2021_07_29_061543) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
-  create_table "tests", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "trips", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "planet_id", null: false
+    t.integer "price"
+    t.boolean "sold", default: false, null: false
+    t.bigint "cabin_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["cabin_id"], name: "index_trips_on_cabin_id"
     t.index ["planet_id"], name: "index_trips_on_planet_id"
     t.index ["user_id"], name: "index_trips_on_user_id"
   end
@@ -86,10 +81,10 @@ ActiveRecord::Schema.define(version: 2021_07_29_061543) do
   end
 
   add_foreign_key "addresses", "users"
-  add_foreign_key "cabins", "trips"
   add_foreign_key "orders", "trips"
   add_foreign_key "orders", "users"
   add_foreign_key "profiles", "users"
+  add_foreign_key "trips", "cabins"
   add_foreign_key "trips", "planets"
   add_foreign_key "trips", "users"
 end

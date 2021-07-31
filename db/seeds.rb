@@ -23,28 +23,30 @@ if User.count == 0
 end
 
 cabins = [
-    {name: "Gold", price: 1000},
-    {name: "Silver", price: 100},
-    {name: "Bronze", price: 10},
+    {name: "Gold" },
+    {name: "Silver" },
+    {name: "Bronze" },
 ]
 
 if Planet.count == 0
     planets.each do |p|
         Planet.create(name: p[:name])
-        puts "created #{p[:name]} trip"
+        puts "created #{p[:name]} planet"
+    end
+end
+
+if Cabin.count == 0
+    cabins.each do |c|
+        Cabin.create(name: c[:name])
+        puts "created #{c[:name]} cabin"
     end
 end
 
 if Trip.count == 0
 
     user = User.find_by username: "Tester"
-    planets.each do |t|
-        planet = Planet.find_by name: t[:name]
-        trip = user.trips.create(planet: planet)
-        puts "created #{t[:name]} trip"
-        cabins.each do |c|
-            Cabin.create(trip: trip, name: c[:name], price: c[:price], sold: false)
-            puts "created #{c[:name]} cabin"
-        end
-    end
+    planet = Planet.find_by name: "Mercury"
+    cabin = Cabin.find_by name: "Gold"
+    trip = user.trips.create(planet: planet, cabin: cabin, price: 123000, sold: false)
+    puts "created trip"
 end
