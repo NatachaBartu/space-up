@@ -8,5 +8,15 @@
   <%= @trip.planet.name %>
 </p>
 
+<p>
+  <strong>Cabin:</strong>
+  <%= @trip.cabin.name %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @trip.price %>
+</p>
+
 <%= link_to 'Edit', edit_trip_path(@trip) %> |
 <%= link_to 'Back', trips_path %>
