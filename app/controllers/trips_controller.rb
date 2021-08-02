@@ -1,7 +1,7 @@
 class TripsController < ApplicationController
   before_action :set_trip, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_planets, only: [:new, :edit, :create]
+  before_action :set_form_vars, only: [:new, :edit, :create]
   # GET /trips or /trips.json
   def index
     @trips = Trip.all.includes(:planet)
@@ -74,8 +74,7 @@ class TripsController < ApplicationController
       @trip = Trip.find(params[:id])
     end
 
-    def set_planets
-      #@trips = Trip.all
+    def set_form_vars
       @planets = Planet.all
       @cabins = Cabin.all
     end

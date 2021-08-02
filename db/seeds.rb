@@ -22,11 +22,7 @@ if User.count == 0
     User.create(username:"Tester", email: "test@test.com", password: "password", password_confirmation: "password")
 end
 
-cabins = [
-    {name: "Gold" },
-    {name: "Silver" },
-    {name: "Bronze" },
-]
+cabins = [ "Gold", "Silver", "Bronze" ]
 
 if Planet.count == 0
     planets.each do |p|
