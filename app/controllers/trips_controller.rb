@@ -23,7 +23,6 @@ class TripsController < ApplicationController
   # POST /trips or /trips.json
   #create a trips
   def create
-    p "ÄAAAAAAA"
     p trip_params
     @trip = current_user.trips.new(trip_params)
 
@@ -68,7 +67,7 @@ class TripsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def trip_params
-      params.require(:trip).permit(:planet_id, :price, :sold, :cabin_id)
+      params.require(:trip).permit(:planet_id, :price, :sold, :cabin_id, :picture)
     end
 
     def set_trips
