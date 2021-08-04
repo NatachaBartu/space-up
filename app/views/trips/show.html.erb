@@ -1,26 +1,19 @@
-<p>
-  <strong>User:</strong>
-  <%= @trip.user_id %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @trip.planet.name %>
-</p>
-
-<p>
-  <strong>Cabin:</strong>
-  <%= @trip.cabin.name %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @trip.price %>
-</p>
-
-
-<%=image_tag image_select(@trip), class: "main-image"%>
-  
-
-<%= link_to 'Edit', edit_trip_path(@trip) %> |
-<%= link_to 'Back', trips_path %>
+<div class='container d-flex flex-column flex-md-row px-2 my-2 my-md-5'>
+  <div class='content col-12 col-md-7 col-lg-8 p-0 pr-md-3'>
+    <div class='col-12 p-0 main-preview mb-4'>
+      <%=image_tag image_select(@trip), class: "thumbnail card-img top"%>
+    </div>
+  </div>
+  <div class= 'sidebar col-lg-4 p-0 mx-2 d-md-block'>
+    <h1 class='mb-sm-2 mb-md-5'><%=@trip.user.profile.first_name%></h1>
+    <h4 class='text-muted'>Cabin: <%=@trip.cabin.name.capitalize%></h4>
+  <br/>
+  <p class='blockquote mt-2'><%=@trip.description%></p>
+  </div>
+</div>
+<div class='container'>
+  <div class ='d-flex justify-content-evenly'>
+    <%= link_to 'Edit', edit_trip_path(@trip) %> |
+    <%= link_to 'Back', trips_path %>
+  </div>
+</div>
