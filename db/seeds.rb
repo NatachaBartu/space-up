@@ -22,8 +22,17 @@ if User.count == 0
     User.create(username:"Tester", email: "test@test.com", password: "password", password_confirmation: "password")
 end
 
+#add a file on db
+user = User.find_by username: "Tester"
+if Profile.count == 0
+    Profile.create(user: user, first_name:"First_name", last_name:"Last_name")
+end
+
+
+
 cabins = [ "Gold", "Silver", "Bronze" ]
 
+#create a planet
 if Planet.count == 0
     planets.each do |p|
         Planet.create(name: p[:name])
@@ -31,6 +40,7 @@ if Planet.count == 0
     end
 end
 
+#create a cabin
 if Cabin.count == 0
     cabins.each do |c|
         Cabin.create(name: c[:name])
@@ -39,8 +49,6 @@ if Cabin.count == 0
 end
 
 if Trip.count == 0
-
-    user = User.find_by username: "Tester"
     planet = Planet.find_by name: "Mercury"
     cabin = Cabin.find_by name: "Gold"
     trip = user.trips.create(planet: planet, cabin: cabin, price: 123000, sold: false)

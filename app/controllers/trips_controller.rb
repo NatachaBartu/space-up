@@ -1,7 +1,9 @@
 class TripsController < ApplicationController
   before_action :set_trip, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_form_vars, only: [:new, :edit, :create]
+  before_action :authorise_user, only: [:edit, :update, :destroy]
+  before_action :set_form_vars, only: [:new, :edit]
+
   # GET /trips or /trips.json
   def index
     @trips = Trip.all.includes(:planet)
@@ -9,6 +11,7 @@ class TripsController < ApplicationController
 
   # GET /trips/1 or /trips/1.json
   def show
+   
   end
 
   # GET /trips/new
@@ -65,9 +68,16 @@ class TripsController < ApplicationController
       @trip = Trip.find(params[:id])
     end
 
+    def authorise_user
+      if current_user.id != @trip.user_id
+        flash[:error] = "You're not allowed to do that"
+        redirect_to trips_path
+      end 
+    end 
+
     # Only allow a list of trusted parameters through.
     def trip_params
-      params.require(:trip).permit(:planet_id, :price, :sold, :cabin_id, :picture)
+      params.require(:trip).permit(:planet_id, :price, :sold, :cabin_id, :picture, :description)
     end
 
     def set_trips

@@ -1,6 +1,10 @@
 FactoryBot.define do
   factory :trip do
-    seller { nil }
-    name { "MyString" }
+    user { nil }
+    cabin { nil }
+    planet { nil }
+    price { 1 }
+    description { "MyText" }
+    sold { false }
   end
 end
