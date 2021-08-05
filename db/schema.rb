@@ -59,12 +59,15 @@ ActiveRecord::Schema.define(version: 2021_08_04_035858) do
 
   create_table "orders", force: :cascade do |t|
     t.bigint "trip_id", null: false
-    t.bigint "user_id", null: false
-    t.string "receipt"
+    t.bigint "buyer_id", null: false
+    t.bigint "seller_id", null: false
+    t.string "reciept"
+    t.string "payment_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["buyer_id"], name: "index_orders_on_buyer_id"
+    t.index ["seller_id"], name: "index_orders_on_seller_id"
     t.index ["trip_id"], name: "index_orders_on_trip_id"
-    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "planets", force: :cascade do |t|
@@ -113,7 +116,8 @@ ActiveRecord::Schema.define(version: 2021_08_04_035858) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "addresses", "users"
   add_foreign_key "orders", "trips"
-  add_foreign_key "orders", "users"
+  add_foreign_key "orders", "users", column: "buyer_id"
+  add_foreign_key "orders", "users", column: "seller_id"
   add_foreign_key "profiles", "users"
   add_foreign_key "trips", "cabins"
   add_foreign_key "trips", "planets"

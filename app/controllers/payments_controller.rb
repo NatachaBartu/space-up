@@ -31,6 +31,7 @@ class PaymentsController < ApplicationController
     end 
 
     def webhook
+        pp "test"
         payment_id = params[:data][:object][:payment_intent]
         payment = Stripe::PaymentIntent.retrieve(payment_id)
         pp payment
@@ -38,6 +39,6 @@ class PaymentsController < ApplicationController
         buyer_id = payment.metadata.user_id
         trip = Trip.find(trip_id)
         trip.update(sold: true)
-        Order.create(trip_id: trip_id, buyer_id: buyer_id, seller_id: trip.user_id, payment_id: payment_id, reciept: payment.charges.data[0].receipt)
+        Order.create(trip_id: trip_id, buyer_id: buyer_id, seller_id: trip.user_id, payment_id: payment_id, reciept: payment.charges.data[0].receipt_url)
     end
 end

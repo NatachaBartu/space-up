@@ -43,8 +43,8 @@ end
 #create a cabin
 if Cabin.count == 0
     cabins.each do |c|
-        Cabin.create(name: c[:name])
-        puts "created #{c[:name]} cabin"
+        Cabin.create(name: c)
+        puts "created #{c} cabin"
     end
 end
 
