@@ -1,2 +1,0 @@
-class Cabin < ApplicationRecord
-end
