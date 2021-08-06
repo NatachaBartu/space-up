@@ -16,7 +16,7 @@ The app creates the expectation to have a unique experience of travelling beyond
 
 1. You can visit my website through the link: [Space UP](https://space-up.herokuapp.com)
 
-1. My GitHub [Space Up](https://github.com/NatachaBartu/space-up)
+1. My GitHub [Repo](https://github.com/NatachaBartu/space-up)
 
 # Functionality 
 
@@ -46,7 +46,7 @@ Aws -  Active Storage for uploading files.
 Deployed by Heroku.
 
 # User stories
-
+![user_stories](docs/user_stories/user_stories.png)
 # Wireframes
 
 ### Desktop
@@ -93,10 +93,7 @@ I've got couple ERDs during the process on implementation of the app.
 
 I used a third-party service as Stripe to hold sensitive data for my users to build my application. 
 
-# Active Record Associations
-
-# Database Relations
-
+# Active Record Associations and Database Relation
 ### Users table
 
 - The User can have just one on profile and one association to address table.
@@ -115,6 +112,6 @@ I used a third-party service as Stripe to hold sensitive data for my users to bu
 ### Order table
 - The Order table belongs to trip table.
 - The trip table is also have the buyer and seller which is the Users.
-
 # Schema Design
+
 
