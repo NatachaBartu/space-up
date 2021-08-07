@@ -17,23 +17,5 @@
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         font-size: 50px;
     }
-.image-samples{
-    display: flex;
-    align-items: space-between;
-    justify-content: center;
-    width: 700px;
-    margin: 0 auto;
-}
-
-.shuttle {
-    background-image: url(image-path("shuttle.jpeg"));
-    width: 300px;
-    height: 300px;
-}
-.cabin_img {
-    background-image: url(image-path("cabinet.jpeg"));
-    width: 300px;
-    height: 300px;
-}
 
 }
