@@ -18,6 +18,8 @@ The app creates the expectation to have a unique experience of travelling beyond
 
 1. My GitHub [Repo](https://github.com/NatachaBartu/space-up)
 
+1. My trello [Trello](https://trello.com/b/dyHHSg9z/marketplace-project)
+
 # Functionality 
 
 The website will be landed on the home page.
@@ -28,7 +30,7 @@ User buyer can select the trip that would like to go, and it will also connect t
 
 # Features
 
-For the MVC application, I used the   following features:
+For the MVC application, I used the following features:
 - Create a User table with Devise for authentication.
 
 Create models and associate the tables. 
@@ -85,13 +87,58 @@ I've got couple ERDs during the process on implementation of the app.
 ![desktop](docs/erd/ERD_5.png)
 
 ### Final ERD
-![desktop]()
+![desktop](docs/erd/ERD_Marketplace.png)
 
-## Explanation of my ERD
+# Explanation of my ERD
 
+### Profile table
+The Profile table belongs to a User.
+It has a primary key profile_id.
+It has the foreign key user_id.
+First_name and Last_name as a string.
+Users table
+Has one Profile.
+Has one Address has many Trips.
+Has many sold Orders.
+Has many bought Orders. 
+I have user_id as a primary key.
+Username as string.
+Email as string.
+
+### Trips table
+Belongs to User.
+Belong to Planet.
+Belong to Cabin.
+It has trip_id as a primary key.
+It has three foreign keys user_id, planet_id and cabin_id.
+It has a price as an integer.
+It has Sold as Boolean.
+It has a description as a text.
+
+### Orders table
+Belongs to Trip.
+Belongs to Buyer.
+Belongs to Seller.
+It has a primary key, Order_id.
+It has three foreign keys buyer_id, trip_id and seller_id.
+It has a payment_id as a string.
+
+### Address table
+It has one User
+It has a primary key address_id.
+It has a foreign key, User_id.
+It has an address as a text.
+
+### Cabin table
+It has a cabin_id, a primary key.
+It ahas a name as a string.
+
+### Planets table
+It has a primary key as planets_id.
+Its have a name as a string.
 # Third Party Services
 
-I used a third-party service as Stripe to hold sensitive data for my users to build my application. 
+I used a third-party service as Stripe to hold sensitive data for users. 
 
 # Active Record Associations and Database Relation
 ### Users table
@@ -114,4 +161,6 @@ I used a third-party service as Stripe to hold sensitive data for my users to bu
 - The trip table is also have the buyer and seller which is the Users.
 # Schema Design
 
+My schema ERD design
 
+![desktop](docs/erd/ERD_Marketplace.png)
