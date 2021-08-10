@@ -4,7 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_one :profile
-  has_one :address
   has_many :trips
 
   has_many :sold_orders, class_name: "Order", foreign_key: "seller_id"
