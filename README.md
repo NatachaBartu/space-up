@@ -1,5 +1,5 @@
 # Space Up
-
+__________________________________________________________
 # Purpose
 
 Technology today is running as faster as usual nowadays. So why not create a trend for the future, an opportunity to travel around space. An extraordinary experience to travel around another "world." I made the app to allow the user to have a space trip, and the sellers can have the opportunity to sell packet trips to the user.
