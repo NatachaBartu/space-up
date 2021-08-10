@@ -7,7 +7,6 @@ The main focus of an application is to apply my skills about ruby on rails and d
 Deployment and have third party services applied on the app.
 
 
-
 1. Why build a Space Up application?
 
 The app creates the expectation to have a unique experience of travelling beyond imagination. Travel around the space is nothing like we have seen lately!!! 
@@ -37,7 +36,6 @@ Create models and associate the tables.
 - Profile
 - Trips
 - Orders
-- Address
 - Cabin 
 - Planets
 
@@ -87,7 +85,7 @@ I've got couple ERDs during the process on implementation of the app.
 ![desktop](docs/erd/ERD_5.png)
 
 ### Final ERD
-![desktop](docs/erd/ERD_Marketplace.png)
+![desktop](docs/erd/ERD_marketplace.png)
 
 # Explanation of my ERD
 
@@ -98,7 +96,7 @@ It has the foreign key user_id.
 First_name and Last_name as a string.
 Users table
 Has one Profile.
-Has one Address has many Trips.
+Has many Trips.
 Has many sold Orders.
 Has many bought Orders. 
 I have user_id as a primary key.
@@ -123,12 +121,6 @@ It has a primary key, Order_id.
 It has three foreign keys buyer_id, trip_id and seller_id.
 It has a payment_id as a string.
 
-### Address table
-It has one User
-It has a primary key address_id.
-It has a foreign key, User_id.
-It has an address as a text.
-
 ### Cabin table
 It has a cabin_id, a primary key.
 It ahas a name as a string.
@@ -143,15 +135,12 @@ I used a third-party service as Stripe to hold sensitive data for users.
 # Active Record Associations and Database Relation
 ### Users table
 
-- The User can have just one on profile and one association to address table.
+- The User can have just one association with profile table.
 - The Users can have many trips.
 - The Users can be also Sellers and Buyers.
 - The Users can can have one Order into the relation Order model.
 ### Profile table
 - The profile table belongs to a User.
-
-### Address table
-- The address table has one User.
 
 ### Trip table
 - The trip table belongs to a User table, Planet table and Cabin table.
@@ -163,4 +152,4 @@ I used a third-party service as Stripe to hold sensitive data for users.
 
 My schema ERD design
 
-![desktop](docs/erd/ERD_Marketplace.png)
+![desktop](docs/erd/ERD_marketplace.png)
