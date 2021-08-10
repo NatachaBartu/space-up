@@ -1,8 +1,8 @@
 # Space Up
-__________________________________________________________
+
 # Purpose
 
-Technology today is running as faster as usual nowadays. So why not create a trend for the future, an opportunity to travel around space. An extraordinary experience to travel around another "world." I made the app to allow the user to have a space trip, and the sellers can have the opportunity to sell packet trips to the user.
+Technology today evolves faster. So why not create a trend for the future, an opportunity to travel around space. An extraordinary experience to travel around another "world." I made the app to allow the user to have a space trip, and the sellers can have the opportunity to sell packet trips to the user.
 The main focus of an application is to apply my skills about ruby on rails and design an app with tables and its relations, and understanding about ERD and design and how I can set an authorisation on my application.
 Deployment and have third party services applied on the app.
 
@@ -23,9 +23,9 @@ The app creates the expectation to have a unique experience of travelling beyond
 
 The website will be landed on the home page.
 The application has Users that can be sellers or buyers. 
-Both users, sellers and buyers, need a request to sign up.
-The app can have many User selling trips, and also it has been arranged by authorisation on the built application. You can update and delete the trips with the respective id user.
-User buyer can select the trip that would like to go, and it will also connect to the Stripe Checkout, which has been implemented on the application.
+Sellers and Buyers, need a request to sign up.
+The app can have many selling trips, and also it has been arranged by authorisation on the built application. You can update and delete the trips.
+Buyer can select the trip that would like to go, and it will also connect to the Stripe Checkout, which has been implemented on the application.
 
 # Features
 
